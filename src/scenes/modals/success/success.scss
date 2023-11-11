@@ -1,0 +1,55 @@
+.darkBG {
+    background-color: rgba(0, 0, 0, 0.4);
+    min-width: 100%;
+    min-height: 280%;
+    left: 50%;
+    top:50% ;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    position: absolute;
+  }
+    
+    .centered {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .modal {
+      width: 250px;
+      height: 130px;
+      background: white;
+      color: white;
+      z-index: -1;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+      
+    }
+    
+    .modalHeader {
+      height: 50px;
+      background: white;
+      overflow: hidden;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+    
+   
+    
+    .modalContent {
+      padding: 10px;
+      font-size: 14px;
+      color: #2c3e50;
+      text-align: center;
+      
+    }
+    
+
+    .animation{
+      width: 120px;
+      height: 60px;
+     
+    }
+  
+    

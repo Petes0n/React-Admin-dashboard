@@ -1,0 +1,76 @@
+@import '../../styles/variables.scss';
+
+
+.cellAction {
+  align-items: center;
+  gap: 17px;
+  margin: left 34px;
+}
+.delButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: crimson;
+  cursor: pointer;
+}
+.addButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: green;
+  cursor: pointer;
+}
+.viewButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: darkblue;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 300px;
+}
+
+//WIGDET//
+.flex-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+margin-bottom: 30px;
+  
+  .flex-box {
+    width: 600px;
+    height: 300px;
+    background: #2a3447;
+    color: white;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    border-radius: 10px;
+    border: 1px solid $soft-bg;
+    .amount{
+        text-align: left;
+        padding-top: 30px;
+        font-size: 300;
+        font-weight: 300;
+    }
+    .content{
+        margin-left: 20px;
+    }
+    .prev-added{
+        color:rgb(121, 172, 120);
+    }
+  }
+}
+
+.one,
+.three {
+  display: inline-block;
+}
+
+.flex-box-button{
+  width: 400px;
+  height: 200px;
+  background: #2a3447;
+  color: white;
+  margin: 10px;
+
+}

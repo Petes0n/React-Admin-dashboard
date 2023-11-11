@@ -1,0 +1,30 @@
+// .main-container {
+//     width: 100%;
+//     background-size: cover;
+//     height: auto;
+//     background-repeat: repeat;
+// }
+.report-box-container{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}
+
+.report-top{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+        padding: 10px;
+        margin: 3px;
+        // display: flex;
+
+       
+}
+
+h1 {
+    color: #fff;
+    font-size: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .report-table{
+    margin:10px;
+  }
