@@ -20,6 +20,7 @@ import {
   TextField,
   Divider,
   InputAdornment,
+  DialogContentText,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -133,7 +134,7 @@ export default function Buyers() {
 
   const [page, pageChange] = useState(0);
   const [pageRow, setRows] = useState(rows);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const handleNewPage = (e, newPage) => {
     pageChange(newPage);
   };
@@ -141,7 +142,15 @@ export default function Buyers() {
     setRowsPerPage(+event.target.value);
     pageChange(5);
   };
-
+const [editBuyerDetails,setEditBuyer] = useState({
+  buyerNewName:'',
+  telephoneNumber:'',
+  newEmailAddress:''
+});
+function submit(e) {
+  e.preventDefault();
+  console.log("editBuyerDetails:",editBuyerDetails);
+}
   const [open, setOpen] = useState(false);
   const handleClickOpenAddAmount = () => {
     setOpen(true);
@@ -157,6 +166,14 @@ export default function Buyers() {
   };
   const handleClickCloseAddNewBuyer = () => {
     setAddNewBuyer(false);
+  };
+
+  const [openEditBuyer, setOpenBuyer] = useState(false);
+  const handleClickOpenEditBuyer = () => {
+    setOpenBuyer(true);
+  };
+  const handleClickCloseEditBuyer = () => {
+    setOpenBuyer(false);
   };
   return (
     <div>
@@ -209,9 +226,8 @@ export default function Buyers() {
                   type="number"
                   value={userInput}
                   onChange={handleChange}
-                  startAdornment={
-                    <InputAdornment position="start">$</InputAdornment>
-                  }
+                  required
+                 
                   onKeyUp={(event) => {
                     // Listens to the keyboard when the "Enter" key pressed **ONLY THE ENTER KEY
                     //  ** similar to clicking the **ADD** Button
@@ -272,7 +288,7 @@ export default function Buyers() {
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleClickCloseAddNewBuyer}>Cancel</Button>
-                <Button onClick={handleAdd}>Add</Button>
+                <Button onClick={handleClickCloseAddNewBuyer}>Add</Button>
               </DialogActions>
             </Dialog>
           </div>
@@ -281,7 +297,7 @@ export default function Buyers() {
       <div style={{ height: 270 }}>
         <TableContainer component={Paper}>
           <Table
-            sx={{ minWidth: 400, maxHeight: 400 }}
+            sx={{ minWidth: 400, maxHeight: 400}}
             aria-label="customized table"
           >
             <TableHead>
@@ -296,7 +312,7 @@ export default function Buyers() {
                 <StyledTableCell align="center">Action</StyledTableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody sx={{marginBottom:'90px'}}>
               {rows &&
                 pageRow
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -320,14 +336,64 @@ export default function Buyers() {
                         sx={{ marginLeft: "10px" }}
                       >
                         <div className="cellAction">
-                          <Button title="Edit">
+                          <Button
+                            title="Edit"
+                            onClick={handleClickOpenEditBuyer}
+                          >
                             <EditIcon
                               sx={{ fontSize: "30px" }}
                               className="viewButton"
-                            >
-                              Edit
-                            </EditIcon>
+                            ></EditIcon>
                           </Button>
+                          <Dialog
+                            open={openEditBuyer}
+                            onClose={handleClickCloseEditBuyer}
+                            TransitionComponent={Transition}
+                            keepMounted
+                          >
+                            <DialogTitle>Edit Buyer Information</DialogTitle>
+                            <DialogContent>
+                              <TextField
+                                id="standard-helperText"
+                                label="Enter Name"
+                                defaultValue="Hether Owens"
+                                variant="standard"
+                                fullWidth
+                                sx={{ marginBottom: "20px" }}
+                                onChange={(e)=>{
+                                  setEditBuyer({ ...editBuyerDetails, buyerNewName: e.target.value })
+                                }}
+                              />
+                              <TextField
+                                id="standard-helperText"
+                                label="Telephone Number"
+                                defaultValue="+23355689024"
+                                variant="standard"
+                                fullWidth
+                                sx={{ marginBottom: "20px" }}
+                                onChange={(e)=>{
+                                  setEditBuyer({ ...editBuyerDetails, telephoneNumber: e.target.value })
+                                }}
+                              />
+                              <TextField
+                                id="standard-helperText"
+                                label="Email Address"
+                                defaultValue="Heatherowens@gmail.com"
+                                variant="standard"
+                                fullWidth
+                                sx={{ marginBottom: "20px" }}
+                                onChange={(e)=>{
+                                  setEditBuyer({ ...editBuyerDetails, newEmailAddress: e.target.value })
+                                }}
+                              />
+                            </DialogContent>
+                            <DialogActions>
+                              <Button onClick={handleClickCloseEditBuyer}>
+                                Cancel
+                              </Button>
+                              <Button onClick={submit}>Edit</Button>
+                            </DialogActions>
+                          </Dialog>
                           <Button title="Delete">
                             <DeleteIcon
                               sx={{ fontSize: "30px" }}

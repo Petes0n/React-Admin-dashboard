@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Drawer, IconButton, Toolbar } from "@mui/material";
-import { Link } from "react-router-dom";
+import { AppBar, Box, Drawer, IconButton, Toolbar } from "@mui/material";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -8,11 +7,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-
 import { routes } from "../../data";
 import "./navbar.scss";
+import { Link } from "react-router-dom";
 
 function Navbar(props) {
+  // State for managing the open/closed state of the sidebar menu
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navigateToPage = (page) => {
@@ -20,53 +20,66 @@ function Navbar(props) {
   };
 
   const sidebar = () => (
-    <Drawer
-      open={menuOpen}
-      onClose={() => setMenuOpen(false)}
-      sx={{
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: 200,
-          boxSizing: "border-box",
-          marginTop: "70px",
-        },
-      }}
-    >
-      <KeyboardArrowLeftIcon
-        onClick={() => setMenuOpen(false)}
+    <Box sx={{ boxShadow: 3 }}>
+      <Drawer
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
         sx={{
-          cursor: "pointer",
-          fontSize: "40px",
-          marginLeft: 19,
+          flexShrink: 3,
+          "& .MuiDrawer-paper": {
+            width: 200,
+            boxSizing: "border-box",
+            borderRadius: "7px",
+            backgroundColor: "#222b3c",
+          },
         }}
-      />
-      <Divider />
-      <List>
-        {routes.map((route) => {
-          return (
-            <ListItem
-              button
-              onClick={() => {
-                navigateToPage(route.link);
-              }}
-              key={route.id}
-            >
-              <Link to={route.link} />
-              <ListItemIcon sx={{ padding: "5px" }}>
-                {route.icon}
-                <ListItemText sx={{color:"black",marginLeft:'5px'}}>{route.pathName}</ListItemText>
-              </ListItemIcon>
-            </ListItem>
-          );
-        })}
-      </List>
-    </Drawer>
+      >
+        <KeyboardArrowLeftIcon
+          onClick={() => setMenuOpen(false)}
+          sx={{
+            cursor: "pointer",
+            fontSize: "40px",
+            marginLeft: 19,
+            marginTop: "3px",
+          }}
+        />
+        <br />
+        <Divider />
+          {/* List of navigation items in the sidebar */}
+        <List>
+          {routes.map((route) => {
+            return (
+              <ListItem
+                button
+                onClick={() => {
+                  navigateToPage(route.url);
+                }}
+                key={route.id}
+              >
+                <ListItemIcon
+                  sx={{ padding: "5px", color: "gold" }}
+                >
+                  {route.icon}
+                  <ListItemText
+                    sx={{ color: "black", marginLeft: "5px", fontSize: 100 }}
+                  >
+                    {route.pathName}
+                  </ListItemText>
+                </ListItemIcon>
+              </ListItem>
+            );
+          })}
+        </List>
+      </Drawer>
+    </Box>
   );
 
+ // Header component
   const header = () => (
     <div>
       <AppBar position="fixed" sx={{ backgroundColor: "#2a3447" }}>
         <Toolbar>
+          {/* Icon button to open the sidebar */}
           <IconButton
             onClick={() => setMenuOpen(true)}
             size="large"
@@ -86,15 +99,16 @@ function Navbar(props) {
               <img src="/search.svg" alt="" className="icon" />
               <img src="/app.svg" alt="" className="icon" />
               <img src="expand.svg" alt="" className="icon" />
+              <Link to='/messages'>
               <div className="notification">
                 <img src="/notifications.svg" alt="" />
                 <span>3</span>
               </div>
+              </Link>
               <div className="user">
                 <img src="/demo.jpeg" alt="" />
                 <span>Heather</span>
               </div>
-              <div></div>
             </div>
           </div>
         </Toolbar>
@@ -103,9 +117,11 @@ function Navbar(props) {
   );
 
   return (
+    // Render the complete component
     <div>
       {sidebar()}
       {header()}
+       {/* Render children components */}
       <div>{props.children}</div>
     </div>
   );

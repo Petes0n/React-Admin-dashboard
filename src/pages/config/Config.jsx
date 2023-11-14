@@ -68,11 +68,15 @@ export default function Config() {
   ];
 
   return (
-    <div className="new">
-      <div className="newContainer">
-        <div className="top">
-          <h1>CONFIGURATION</h1>
+    <div >
+     <div>
+      <div className="report-new">
+        <div className="report-newContainer">
+          <div className="report-top">
+            <h1>Roles And Permissions</h1>
+          </div>
         </div>
+      </div>
       
 
       <div>

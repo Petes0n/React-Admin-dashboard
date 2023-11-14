@@ -1,35 +1,37 @@
+// Importing necessary components from React and react-router-dom
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Home from "./pages/Home/Home";
-import "./styles/global.scss";
-import Config from "./pages/config/Config";
-import AddProducts from "./pages/addproducts/AddProducts";
+// Importing the array of routes from the routes file
+import { routes } from "./routes";
+import './styles/global.scss';
+// Importing the Navbar component
 import Navbar from "./components/navbar/Navbar";
-import Buyers from "./pages/buyers/Buyers";
-import AdminForm from "./pages/adminForm/adminform";
-import Test from "./pages/config/Test";
-import Reconciliation from "./pages/Reconciliation/Reconciliation";
-import Report from "./pages/report/Report";
+
+
+// Functional component representing the main application
 function App() {
   return (
+     // Main container for the entire application
     <div className="main">
-       < div className='container'></div>
-       <div className='contentContainer'>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={ <Navbar><Home /></Navbar> }/>
-        <Route path="/config" element={ <Navbar><Config /></Navbar> }/>
-        <Route path="/addProduct" element={ <Navbar><AddProducts /></Navbar> }/>
-        <Route path="/buyers" element={ <Navbar><Buyers /></Navbar> }/>
-        {/* <Route path="/admin" element={ <Navbar><AdminForm /></Navbar> }/> */}
-        <Route path="/reconciliation" element={ <Navbar><Reconciliation /></Navbar> }/>
-        <Route path="/reports" element={ <Navbar><Report /></Navbar> }/>
-        
-      </Routes>
-    </BrowserRouter>
-    </div>
+      <div className='container'></div>
+      <div className='contentContainer'>
+         {/* BrowserRouter to enable routing 
+         check this site to read more about react Browser router
+         https://reactrouter.com/en/main/router-components/browser-router
+         */}
+        <BrowserRouter>
+        <Navbar />
+        {/* Routes component for defining application routes */}
+          <Routes>
+             {/* Mapping over the routes array and creating Route components */}
+            {routes.map((route) => (
+              <Route key={route.path} path={route.path} element={route.element} />
+            ))}
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
-
 export default App;
+
+

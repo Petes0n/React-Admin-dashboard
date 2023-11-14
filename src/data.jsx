@@ -237,37 +237,37 @@ export const routes=[
  
   {
     id:1,
-    link:'/',
+    url:'/',
     icon:<OtherHousesIcon />,
     pathName:'Home'
   },
   {
     id:2,
-    link:'/config',
+    url:'/config',
     icon:<SettingsIcon />,
-    pathName:'Settings'
+    pathName:'Permissions'
   },
   {
     id:3,
-    link:'/addProduct',
+    url:'/addProduct',
     icon:<AddCardIcon />,
     pathName:'Add Product'
   },
   {
     id:4,
-    link:'/buyers',
+    url:'/buyers',
     icon: <LocalMallIcon />,
     pathName:'Buyers'
   },
   {
     id:5,
-    link:'/reconciliation',
+    url:'/reconciliation',
     icon: <BarChartSharpIcon  />,
     pathName:'Reconciliation'
   },
   {
     id:6,
-    link:'/reports',
+    url:'/reports',
     icon: <ReportIcon />,
     pathName:'Reports'
   },
@@ -308,3 +308,51 @@ export const addBuyerInputField =[
     fieldRequired:false
   }
 ]
+
+export const addProductsInput = [
+  {
+    id:1,
+    fieldId:"filled-required",
+    fieldLabel:"Product Name",
+    fieldVariant:"filled",
+    fieldType:"text",
+    fieldRequired:true
+  },
+  {
+    id:2,
+    fieldId:"filled-required",
+    fieldLabel:"Add Category",
+    fieldVariant:"filled",
+    fieldType:"text",
+    fieldRequired:false
+  },
+  {
+    id:3,
+    fieldId:"outlined-multiline-flexible",
+    fieldLabel:"Product Description",
+    fieldVariant:"filled",
+    fieldType:"multiline",
+    rows:4,
+    fieldRequired:true
+  }
+  
+]
+
+export const categories = [
+  {
+    value: 'Accessories',
+    label: 'Accessories',
+  },
+  {
+    value: 'Desktop',
+    label: 'Desktop Computers',
+  },
+  {
+    value: 'Laptops',
+    label: 'Laptop Computers',
+  },
+  {
+    value: 'Monitors',
+    label: 'Monitors',
+  },
+];
