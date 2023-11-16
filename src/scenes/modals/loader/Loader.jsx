@@ -10,12 +10,12 @@ export default function Loader() {
   return (
     <div>
       <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: "gold", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
       >
         <CircularProgress color="inherit" />
         <br />
-        <Typography variant="h6" sx={{ padding: 2 }}>
+        <Typography variant="h6" sx={{ padding: 2,color:'white' }}>
           Please wait...
         </Typography>
       </Backdrop>

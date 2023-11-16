@@ -15,26 +15,31 @@ export default function Delete({setIsOpen}) {
     <Dialog open={open} >
                   <DialogContent>
                     <DialogContentText sx={{width:450,height:40}}>
-                    <Typography variant='h6'sx={{fontWeight:90,}}>Are you sure you want to delete the existing item?</Typography> 
+                    <Typography variant='h6'sx={{fontWeight:90,color:'black'}}>Are you sure you want to delete the existing item?</Typography> 
                     </DialogContentText>
                     
                   </DialogContent>
-                  <DialogActions>
+                  <DialogActions sx={{display:'flex',padding:'20px'}}>
                     <Button
                       onClick={handleClose}
                       variant="contained"
-                      sx={{ "&:hover": { backgroundColor: "red" } ,backgroundColor:'red',display:'flex',justifyContent:'space-between'} }
+                      sx={{ "&:hover": { backgroundColor: "whiteSmoke" } ,
+                      backgroundColor:'#fff',display:'flex',
+                      justifyContent:'space-between',color:'black'
+                      ,marginRight:'50px'} }
                       className="cancel"
                     >
-                      Cancel
+                      No
                     </Button>
                     <Button
                       onClick={handleClose}
                       variant="contained"
-                      sx={{ "&:hover": { backgroundColor: "green" } ,backgroundColor:'green'} }
+                      sx={{ "&:hover": { backgroundColor: "gold" } ,
+                      backgroundColor:'gold',
+                      marginRight:'60px'} }
                       className="add"
                     >
-                     Delete
+                     Yes
                     </Button>
                   </DialogActions>
                 </Dialog>

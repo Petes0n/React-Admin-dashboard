@@ -177,10 +177,10 @@ function submit(e) {
   };
   return (
     <div>
-      <div className="new">
-        <div className="newContainer">
-          <div className="top">
-            <h1>BUYERS</h1>
+      <div className="report-new">
+        <div className="report-newContainer">
+          <div className="report-top">
+            <h1>Buyers</h1>
           </div>
         </div>
       </div>
@@ -203,10 +203,13 @@ function submit(e) {
             </Typography>
             <Button
               variant="contained"
+              disableRipple
               sx={{
                 justifyContent: "center",
                 marginLeft: "30px",
                 marginTop: "100px",
+                backgroundColor:'gold',
+                "&:hover": { backgroundColor: "gold"}
               }}
               onClick={handleClickOpenAddAmount}
             >
@@ -243,8 +246,8 @@ function submit(e) {
                 />
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleAdd}>Add</Button>
+                <Button onClick={handleClose}  disableRipple>Cancel</Button>
+                <Button onClick={handleAdd}  disableRipple>Add</Button>
               </DialogActions>
             </Dialog>
             {/* Add new buyer    */}
@@ -254,6 +257,8 @@ function submit(e) {
                 justifyContent: "center",
                 marginLeft: "100px",
                 marginTop: "100px",
+                backgroundColor:'gold',
+                "&:hover": { backgroundColor: "gold"}
               }}
               onClick={handleClickOpenAddNewBuyer}
             >
@@ -297,7 +302,7 @@ function submit(e) {
       <div style={{ height: 270 }}>
         <TableContainer component={Paper}>
           <Table
-            sx={{ minWidth: 400, maxHeight: 400}}
+            sx={{ minWidth: 400, maxHeight: 100}}
             aria-label="customized table"
           >
             <TableHead>
@@ -414,6 +419,7 @@ function submit(e) {
                     </StyledTableRow>
                   ))}
             </TableBody>
+            
           </Table>
           <Divider />
           <TablePagination
@@ -426,8 +432,10 @@ function submit(e) {
             sx={{
               color: "black",
             }}
-          ></TablePagination>
+          />
         </TableContainer>
+          
+          
       </div>
     </div>
   );

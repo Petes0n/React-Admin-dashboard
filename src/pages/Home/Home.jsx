@@ -10,6 +10,7 @@ import {
   chartBoxProduct,
   barChartBoxVisit,
   barChartBoxRevenue,
+  homeTableData,
 } from "../../data";
 import "./home.scss";
 import Table from "@mui/material/Table";
@@ -21,152 +22,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
 import { useState } from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import MuiAppBar from "@mui/material/AppBar";
-
-const drawerWidth = 240;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-// const DrawerHeader = styled("div")(({ theme }) => ({
-//   display: "flex",
-//   alignItems: "center",
-//   padding: theme.spacing(0, 1),
-//   // necessary for content to be below app bar
-//   ...theme.mixins.toolbar,
-//   justifyContent: "flex-end",
-// }));
 
 function Home() {
-  // const theme = useTheme();
-  // const [open, setOpen] = useState(false);
-
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
-
-  const data = [
-    {
-      id: 1,
-      Product: "Acer Nitro 5",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "Cash",
-      status: "Approved",
-    },
-    {
-      id: 2,
-      Product: "Pavilion",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "MOMO",
-      status: "Approved",
-    },
-    {
-      id: 3,
-      Product: "HP envy",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "Cash",
-      status: "Pending",
-    },
-    {
-      id: 4,
-      Product: "HP envy",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "Cash",
-      status: "Pending",
-    },
-    {
-      id: 5,
-      Product: "HP 8456",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "Online",
-      status: "Approved",
-    },
-    {
-      id: 6,
-      Product: "HP 8456",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "Online",
-      status: "Approved",
-    },
-    {
-      id: 7,
-      Product: "HP 8456",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "Online",
-      status: "Approved",
-    },
-    {
-      id: 8,
-      Product: "HP 8456",
-      img: "https://picsum.photos/100",
-      customer: "Peter",
-      date: "1 January",
-      amount: 465,
-      method: "Online",
-      status: "Approved",
-    },
-  ];
   const [page, pageChange] = useState(0);
-  const [row, setRows] = useState(data);
+  const [row, setRows] = useState(homeTableData);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const handleNewPage = (e, newPage) => {
     pageChange(newPage);
@@ -213,7 +72,7 @@ function Home() {
           sx={{ minWidth: 650, overflowY: "scroll", maxHeight: 450 }}
         >
           <Table
-            sx={{ minWidth: 650, backgroundColor: "#2a3447" }}
+            sx={{ minWidth: 650, backgroundColor: "white", color: "black" }}
             aria-label="simple table"
             stickyHeader
           >
@@ -229,29 +88,25 @@ function Home() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data &&
+              {homeTableData &&
                 row
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
                     <TableRow key={row.id}>
-                      <TableCell className="tablecell" sx={{ color: "white" }}>
+                      <TableCell className="tablecell" sx={{ color: "black" }}>
                         {row.id}
                       </TableCell>
-                      <TableCell className="tablecell" sx={{ color: "white" }}>
+                      <TableCell className="tablecell" sx={{ color: "black" }}>
                         <div className="cellWrapper">
                           <img src={row.img} alt="" className="image" />
                           {row.Product}
                         </div>
                       </TableCell>
-                      <TableCell sx={{ color: "white" }}>{row.id}</TableCell>
-                      <TableCell sx={{ color: "white" }}>{row.date}</TableCell>
-                      <TableCell sx={{ color: "white" }}>
-                        {row.amount}
-                      </TableCell>
-                      <TableCell sx={{ color: "white" }}>
-                        {row.method}
-                      </TableCell>
-                      <TableCell sx={{ color: "white" }}>
+                      <TableCell>{row.id}</TableCell>
+                      <TableCell>{row.date}</TableCell>
+                      <TableCell>{row.amount}</TableCell>
+                      <TableCell>{row.method}</TableCell>
+                      <TableCell sx={{ color: "black" }}>
                         <span className={`status ${row.status}`}>
                           {row.status}
                         </span>
@@ -268,9 +123,9 @@ function Home() {
           component="div"
           onPageChange={handleNewPage}
           onRowsPerPageChange={handleRowsChange}
-          count={data.length}
+          count={homeTableData.length}
           sx={{
-            color: "white",
+            color: "black",
           }}
         ></TablePagination>
       </div>

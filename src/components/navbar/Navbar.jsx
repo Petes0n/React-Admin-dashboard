@@ -41,11 +41,12 @@ function Navbar(props) {
             fontSize: "40px",
             marginLeft: 19,
             marginTop: "3px",
+            color:'white'
           }}
         />
         <br />
         <Divider />
-          {/* List of navigation items in the sidebar */}
+        {/* List of navigation items in the sidebar */}
         <List>
           {routes.map((route) => {
             return (
@@ -56,13 +57,9 @@ function Navbar(props) {
                 }}
                 key={route.id}
               >
-                <ListItemIcon
-                  sx={{ padding: "5px", color: "gold" }}
-                >
+                <ListItemIcon sx={{ padding: "5px", color: "gold" }}>
                   {route.icon}
-                  <ListItemText
-                    sx={{ color: "black", marginLeft: "5px", fontSize: 100 }}
-                  >
+                  <ListItemText sx={{ color: "white", marginLeft: "6px" }}>
                     {route.pathName}
                   </ListItemText>
                 </ListItemIcon>
@@ -74,7 +71,7 @@ function Navbar(props) {
     </Box>
   );
 
- // Header component
+  // Header component
   const header = () => (
     <div>
       <AppBar position="fixed" sx={{ backgroundColor: "#2a3447" }}>
@@ -99,11 +96,11 @@ function Navbar(props) {
               <img src="/search.svg" alt="" className="icon" />
               <img src="/app.svg" alt="" className="icon" />
               <img src="expand.svg" alt="" className="icon" />
-              <Link to='/messages'>
-              <div className="notification">
-                <img src="/notifications.svg" alt="" />
-                <span>3</span>
-              </div>
+              <Link to="/messages">
+                <div className="notification">
+                  <img src="/notifications.svg" alt="" />
+                  <span>3</span>
+                </div>
               </Link>
               <div className="user">
                 <img src="/demo.jpeg" alt="" />
@@ -121,7 +118,7 @@ function Navbar(props) {
     <div>
       {sidebar()}
       {header()}
-       {/* Render children components */}
+      {/* Render children components */}
       <div>{props.children}</div>
     </div>
   );

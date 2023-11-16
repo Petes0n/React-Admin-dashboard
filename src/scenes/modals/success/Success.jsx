@@ -1,22 +1,32 @@
-import React from "react";
-import "./success.scss";
-import success from "../../animations/success.json";
-import lottie from "lottie-react";
-import Lottie from "lottie-react";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Snackbar from '@mui/material/Snackbar';
+import { Alert } from '@mui/material';
+import { useState } from 'react';
 
 export default function Success() {
+  const [state, setState] =useState({
+    open: true,
+    vertical: 'top',
+    horizontal: 'center',
+  });
+  const { vertical, horizontal, open } = state;
+
+  const handleClose = () => {
+    setState({ ...state, open: false });
+  };
   return (
-    <div className="darkBG">
-      <div className="centered">
-        <div className="modal">
-          <div className="modalContent">
-            <div className="modalContent">
-            <Lottie animationData={success} className='animation'/>              
-            <h4>Success.</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box sx={{ width: 500 }}>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        onClose={handleClose}
+        autoHideDuration={600}
+        key={vertical + horizontal}
+      >
+        <Alert severity="success">Success!</Alert>
+        </Snackbar>
+    </Box>
+    
   );
 }

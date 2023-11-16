@@ -89,6 +89,7 @@ export default function Config() {
                   onClick={handleClickOpen}
                   align="center"
                   disableRipple
+                  sx={{color:'white',backgroundColor:'gold',marginBottom:'10px',"&:hover": { backgroundColor: "gold"}}}
                 >
                   Add Role
                 </Button>

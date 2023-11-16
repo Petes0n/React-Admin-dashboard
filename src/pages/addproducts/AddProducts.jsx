@@ -8,6 +8,7 @@ import {
   InputAdornment,
   InputLabel,
   MenuItem,
+  Paper,
   TextField,
   Typography,
 } from "@mui/material";
@@ -51,6 +52,7 @@ export default function AddProducts() {
       {addProductsInput.map((productInputField) => {
         return (
           <div>
+            
             <form onSubmit={submit}>
             <TextField
             key={productInputField.id}
@@ -64,7 +66,8 @@ export default function AddProducts() {
               defaultValue={productInputField.fieldDefaultValue}
               helperText={productInputField.filedHelperText}
               fullWidth
-              sx={{ marginBottom: "30px" }}
+              sx={{ marginBottom: "30px",color:'white' }}
+
                     />
                     </form>
           </div>
