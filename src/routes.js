@@ -6,11 +6,12 @@ import Buyers from "./pages/buyers/Buyers";
 import Reconciliation from "./pages/Reconciliation/Reconciliation";
 import Report from "./pages/report/Report";
 import Messages from "./pages/messages/Messages";
+import Single from "./pages/userInfo/SingleUser";
 
 
 // Array of route objects, each specifying a path and its corresponding React element
 export const routes = [
-  { path: "/", element: <Home /> },// Home page route
+  { path: "/", element: <Single /> },// Home page route
   { path: "/config", element: <Config /> },
   { path: "/addProduct", element: <AddProducts /> },
   { path: "/buyers", element: <Buyers /> },

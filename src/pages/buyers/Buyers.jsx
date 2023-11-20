@@ -18,15 +18,14 @@ import {
   DialogActions,
   Slide,
   TextField,
-  Divider,
-  InputAdornment,
-  DialogContentText,
+  Divider
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import "./buyers.scss";
-import { addBuyerInputField } from "../../data";
+import { addBuyerInputField, buyersDataRows } from "../../data";
+import { Transition } from "../../scenes/modals/effects/transition";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -48,40 +47,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const rows = [
-  {
-    sn: 1,
-    name: "Heather Owens",
-    telephone: "+233 55689024",
-    buyersId: 104561,
-    amountPaid: 20000,
-  },
-  {
-    sn: 2,
-    name: "Joana Sufre",
-    telephone: "+233 55689024",
-    buyersId: 187451,
-    amountPaid: 5000,
-  },
-  {
-    sn: 3,
-    name: "Paulina Yeboah",
-    telephone: "+233 55600024",
-    buyersId: 124560,
-    amountPaid: 200,
-  },
-  {
-    sn: 4,
-    name: "Hughes Jefferson",
-    telephone: "+233 55600024",
-    buyersId: 124560,
-    amountPaid: 200,
-  },
-];
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+
+
 
 export default function Buyers() {
   const [userInput, setUserInput] = useState("");
@@ -130,10 +98,10 @@ export default function Buyers() {
   useEffect(() => {
     counter(0, result);
     //The empty dependency array ([]) ensures that useEffect only runs once on component mount.
-  }, []);
+  }, []);//eslint-disable-line react-hooks/exhaustive-deps
 
   const [page, pageChange] = useState(0);
-  const [pageRow, setRows] = useState(rows);
+  const [pageRow, setRows] = useState(buyersDataRows);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const handleNewPage = (e, newPage) => {
     pageChange(newPage);
@@ -318,7 +286,7 @@ function submit(e) {
               </TableRow>
             </TableHead>
             <TableBody sx={{marginBottom:'90px'}}>
-              {rows &&
+              {buyersDataRows &&
                 pageRow
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
@@ -428,7 +396,7 @@ function submit(e) {
             component="div"
             onPageChange={handleNewPage}
             onRowsPerPageChange={handleRowsChange}
-            count={rows.length}
+            count={buyersDataRows.length}
             sx={{
               color: "black",
             }}

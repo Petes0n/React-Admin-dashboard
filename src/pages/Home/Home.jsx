@@ -39,28 +39,28 @@ function Home() {
       <div className="">
         <div className="home">
           <div className="box box1">
-            <Topbox />{" "}
+            <Topbox />
           </div>
           <div className="box box2">
-            <ChartBox {...chartBoxUser} />{" "}
+            <ChartBox {...chartBoxUser} />
           </div>
           <div className="box box3">
-            <ChartBox {...chartBoxConversion} />{" "}
+            <ChartBox {...chartBoxConversion} />
           </div>
           <div className="box box4">
             <PieChartBox />
           </div>
           <div className="box box5">
-            <ChartBox {...chartBoxProduct} />{" "}
+            <ChartBox {...chartBoxProduct} />
           </div>
           <div className="box box6">
-            <ChartBox {...chartBoxRevenue} />{" "}
+            <ChartBox {...chartBoxRevenue} />
           </div>
           <div className="box box7">
-            <BigChart />{" "}
+            <BigChart />
           </div>
           <div className="box box8">
-            <BarChartBox {...barChartBoxVisit} />{" "}
+            <BarChartBox {...barChartBoxVisit} />
           </div>
           <div className="box box9">
             <BarChartBox {...barChartBoxRevenue} />
@@ -125,7 +125,7 @@ function Home() {
           onRowsPerPageChange={handleRowsChange}
           count={homeTableData.length}
           sx={{
-            color: "black",
+            color: "white",
           }}
         ></TablePagination>
       </div>

@@ -430,24 +430,191 @@ export const messagesData = [
     id: 1,
     name: "Paulina Hesse",
     img: "https://picsum.photos/100",
-    message: "Inquietude simplicity terminated she compliment remarkably few her nay. The weeks are ham asked jokes. Neglected perceived shy nay concluded. Not mile draw plan snug next all. Houses latter an valley be indeed wished merely in my. Money doubt oh drawn every or an china. Visited out friends for expense message set eat.",
+    message:
+      "Inquietude simplicity terminated she compliment remarkably few her nay. The weeks are ham asked jokes. Neglected perceived shy nay concluded. Not mile draw plan snug next all. Houses latter an valley be indeed wished merely in my. Money doubt oh drawn every or an china. Visited out friends for expense message set eat.",
   },
   {
     id: 2,
     name: "Julius Caesar",
     img: "https://picsum.photos/100",
-    message: "Excited him now natural saw passage offices you minuter. At by asked being court hopes. Farther so friends am to detract. Forbade concern do private be. Offending residence but men engrossed shy. Pretend am earnest offered arrived company so on. Felicity informed yet had admitted strictly how you.",
+    message:
+      "Excited him now natural saw passage offices you minuter. At by asked being court hopes. Farther so friends am to detract. Forbade concern do private be. Offending residence but men engrossed shy. Pretend am earnest offered arrived company so on. Felicity informed yet had admitted strictly how you.",
   },
   {
     id: 3,
     name: "Thug",
     img: "https://picsum.photos/100",
-    message: "Inquietude simplicity terminated she compliment remarkably few her nay. The weeks are ham asked jokes. Neglected perceived shy nay concluded. Not mile draw plan snug next all. Houses latter an valley be indeed wished merely in my. Money doubt oh drawn every or an china. Visited out friends for expense message set eat.",
+    message:
+      "Inquietude simplicity terminated she compliment remarkably few her nay. The weeks are ham asked jokes. Neglected perceived shy nay concluded. Not mile draw plan snug next all. Houses latter an valley be indeed wished merely in my. Money doubt oh drawn every or an china. Visited out friends for expense message set eat.",
   },
   {
     id: 4,
     name: "Jonas Jones",
     img: "https://picsum.photos/100",
-    message: "Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no rejoiced. End friendship sufficient assistance can prosperous met. As game he show it park do. Was has unknown few certain ten promise. No finished my an likewise cheerful packages we. For assurance concluded son something depending discourse see led collected. Packages oh no denoting my advanced humoured. Pressed be so thought natural.",
+    message:
+      "Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no rejoiced. End friendship sufficient assistance can prosperous met. As game he show it park do. Was has unknown few certain ten promise. No finished my an likewise cheerful packages we. For assurance concluded son something depending discourse see led collected. Packages oh no denoting my advanced humoured. Pressed be so thought natural.",
+  },
+];
+
+export const reconciliationRows = [
+  {
+    sn: 1,
+    name: "Heather Owens",
+    telephone: "+233 55689024",
+    buyersId: 104561,
+    balance: 12,
+    amountPaid: 200,
+  },
+  {
+    sn: 2,
+    name: "Joana Sufre",
+    telephone: "+233 55689024",
+    buyersId: 187451,
+    balance: 60,
+    amountPaid: 500,
+  },
+  {
+    sn: 3,
+    name: "Paulina Yeboah",
+    telephone: "+233 55600024",
+    buyersId: 124560,
+    balance: "--",
+    amountPaid: 200,
+  },
+  {
+    sn: 4,
+    name: "Hughes Jefferson",
+    telephone: "+233 55600024",
+    buyersId: 124560,
+    balance: 160,
+    amountPaid: 200,
+  },
+  {
+    sn: 5,
+    name: "Anna Munroe",
+    telephone: "+233 55600774",
+    buyersId: 120560,
+    balance: 160,
+    amountPaid: 100,
+  },
+  {
+    sn: 6,
+    name: "James Jefferson",
+    telephone: "+233 55600024",
+    buyersId: 194560,
+    balance: 10,
+    amountPaid: 200,
+  },
+  {
+    sn: 7,
+    name: "Henry Hill",
+    telephone: "+233 55607024",
+    buyersId: 164560,
+    balance: 40,
+    amountPaid: 600,
+  },
+];
+
+export const ReconciliationGraphData = [
+  {
+    name: "Heather Owens",
+    uv: 80,
+  },
+  {
+    name: "Joana Sufre",
+    uv: 30,
+  },
+  {
+    name: "Paulina Yeboah",
+    uv: 20,
+  },
+  {
+    name: "Hughes Jefferson",
+    uv: 67,
+  },
+];
+
+export const buyersDataRows = [
+  {
+    sn: 1,
+    name: "Heather Owens",
+    telephone: "+233 55689024",
+    buyersId: 104561,
+    amountPaid: 20000,
+  },
+  {
+    sn: 2,
+    name: "Joana Sufre",
+    telephone: "+233 55689024",
+    buyersId: 187451,
+    amountPaid: 5000,
+  },
+  {
+    sn: 3,
+    name: "Paulina Yeboah",
+    telephone: "+233 55600024",
+    buyersId: 124560,
+    amountPaid: 200,
+  },
+  {
+    sn: 4,
+    name: "Hughes Jefferson",
+    telephone: "+233 55600024",
+    buyersId: 124560,
+    amountPaid: 200,
+  },
+];
+
+export const singleUserData = [
+  {
+    months: "January",
+    uv: 3000,
+  },
+  {
+    months: "February",
+    uv: 200,
+  },
+  {
+    months: "March",
+    uv: 2080,
+  },
+  {
+    months: "April",
+    uv: 1900,
+  },
+];
+
+export const singleUserDetailData = [
+  {
+    id: 1,
+    Month: "January",
+    QuantitySold: 3000,
+    itemsReceived: 4000,
+    balance: 100,
+    totalCash: 200,
+  },
+  {
+    id: 2,
+    Month: "February",
+    QuantitySold: 200,
+    itemsReceived: 400,
+    balance: 2000,
+    totalCash: 600,
+  },
+  {
+    id: 3,
+    Month: "March",
+    QuantitySold: 2080,
+    itemsReceived: 400,
+    balance: 100,
+    totalCash: 100,
+  },
+  {
+    id: 4,
+    Month: "April",
+    QuantitySold: 1900,
+    itemsReceived: 300,
+    balance: 100,
+    totalCash: 200,
   },
 ];
