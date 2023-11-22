@@ -1,4 +1,3 @@
-// import Datatable from "../../Components/datatable/Datatable";
 import { Area, AreaChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import "./single.scss";
 import {
@@ -6,7 +5,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Divider,
   Paper,
@@ -17,7 +15,6 @@ import {
   TablePagination,
   TableRow,
   TextField,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import {
@@ -28,24 +25,27 @@ import { singleUserDetailData, singleUserData } from "../../data";
 import { useState } from "react";
 import { Transition } from "../../scenes/modals/effects/transition";
 
+
 const Single = () => {
   const [page, pageChange] = useState(0);
   const [open, setOpen] = useState(false);
-  const [editProfile,setEditProfile] = useState({
-    name:'',
-    email:'',
-    oldPassword:'',
-    newPassword:'',
-    confirmPassword:'',
-    newProfilePicture:'',
-    file:''
+  const [editProfile, setEditProfile] = useState({
+    name: "",
+    email: "",
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+    newProfilePicture: "",
+    file: "",
   });
-  const submit =()=>{
 
-  }
-
-  const [pageRow, setRows] = useState(singleUserDetailData);
-  const [rowsPerPage, setRowsPerPage] = useState(6);
+ // Function to handle form submission
+  const submit = (event) => {
+event.preventDefault();
+  };
+ //state variables and event handlers for pagination
+  const [pageRow] = useState(singleUserDetailData);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const handleNewPage = (e, newPage) => {
     pageChange(newPage);
   };
@@ -53,6 +53,7 @@ const Single = () => {
     setRowsPerPage(+event.target.value);
     pageChange(5);
   };
+   // Event handlers for opening and closing the dialog
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -69,107 +70,132 @@ const Single = () => {
           </div>
         </div>
       </div>
+       {/* Dialog for editing profile */}
       <Dialog
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
         keepMounted
-        
       >
-        <DialogTitle sx={{marginLeft:'230px',marginBottom:'5px'}}>Edit Profile</DialogTitle>
+        <DialogTitle sx={{ marginLeft: "230px", marginBottom: "5px" }}>
+          Edit Profile
+        </DialogTitle>
+          {/* Profile image section */}
         <div className="single-user-porfile">
-        <img  src={editProfile.file ? URL.createObjectURL(editProfile.file) : "/demo.jpeg"} alt="" className="singleUserImage"/>
+          <img
+            src={
+              editProfile.file
+                ? URL.createObjectURL(editProfile.file)
+                : "/noavatar.png"
+            }
+            alt=""
+            className="singleUserImage"
+          />
         </div>
         <div className="user-detail-content">
-        <div className="dialog-left">
-        <DialogContent>
-          <TextField
-            id="standard-helperText"
-            label="Enter Name"
-            defaultValue="Hether Owens"
-            variant="standard"
-            fullWidth
-            sx={{ marginBottom: "20px",marginTop:'50px' }}
-            onChange={(e) => {
-              setEditProfile({
-                ...editProfile,
-                name: e.target.value,
-              });
-            }}
-          />
-          <TextField
-            id="standard-helperText"
-            label="Email Address"
-            defaultValue="Heatherowens@gmail.com"
-            variant="standard"
-            fullWidth
-            sx={{ marginBottom: "20px" }}
-            onChange={(e) => {
-              setEditProfile({
-                ...editProfile,
-                email: e.target.value,
-              });
-            }}
-          />
-            <TextField
-              id="standard-helperText"
-              label="Telephone Number"
-              defaultValue="+23355689024"
-              variant="standard"
-              fullWidth
-              sx={{ marginBottom: "5px" }}
-              onChange={(e) => {
-                setEditProfile({
-                  ...editProfile,
-                  telephoneNumber: e.target.value,
-                });
-              }}
-            />
-            
-        </DialogContent>
-        </div>
-        <div className="dialog-right">
-          <DialogContent>
-          <Typography  variant='h6'sx={{color:'red'}}>Edit Password Only</Typography>
-            <TextField
-              label="Enter old password"
-              variant="standard"
-              fullWidth
-              sx={{ marginBottom: "10px" }}
-              onChange={(e) => {
-                setEditProfile({
-                  ...editProfile,
-                  oldPassword: e.target.value,
-                });
-              }}
-            />
-            <TextField
-              label="New Password"
-              variant="standard"
-              fullWidth
-              sx={{ marginBottom: "20px" }}
-              onChange={(e) => {
-                setEditProfile({
-                  ...editProfile,
-                  newPassword: e.target.value,
-                });
-              }}
-            />
-            <TextField
-              label="Confirm Password"
-              variant="standard"
-              fullWidth
-              sx={{ marginBottom: "20px" }}
-              onChange={(e) => {
-                setEditProfile({
-                  ...editProfile,
-                  confirmPassword: e.target.value,
-                });
-              }}
-            />
-            
-          </DialogContent>
-        </div>
+          <div className="dialog-left">
+            <DialogContent>
+               {/* Form for editing user details */}
+              <TextField
+                id="standard-helperText"
+                label="Enter Name"
+                defaultValue="Hether Owens"
+                variant="standard"
+                fullWidth
+                sx={{ marginBottom: "20px", marginTop: "50px" }}
+                onChange={(e) => {
+                  setEditProfile({
+                    ...editProfile,
+                    name: e.target.value,
+                  });
+                }}
+              />
+              <TextField
+                id="standard-helperText"
+                label="Email Address"
+                defaultValue="Heatherowens@gmail.com"
+                variant="standard"
+                fullWidth
+                sx={{ marginBottom: "20px" }}
+                onChange={(e) => {
+                  setEditProfile({
+                    ...editProfile,
+                    email: e.target.value,
+                  });
+                }}
+              />
+              <TextField
+                id="standard-helperText"
+                label="Telephone Number"
+                defaultValue="+23355689024"
+                variant="standard"
+                fullWidth
+                sx={{ marginBottom: "5px" }}
+                onChange={(e) => {
+                  setEditProfile({
+                    ...editProfile,
+                    telephoneNumber: e.target.value,
+                  });
+                }}
+              />
+            </DialogContent>
+          </div>
+          <div className="dialog-right">
+            <DialogContent>
+              <Typography variant="h6" sx={{ color: "red" }}>
+                Edit Password Only
+              </Typography>
+              <TextField
+                label="Enter old password"
+                variant="standard"
+                fullWidth
+                sx={{ marginBottom: "10px" }}
+                onChange={(e) => {
+                  setEditProfile({
+                    ...editProfile,
+                    oldPassword: e.target.value,
+                  });
+                }}
+              />
+              <TextField
+                label="New Password"
+                variant="standard"
+                fullWidth
+                sx={{ marginBottom: "20px" }}
+                onChange={(e) => {
+                  setEditProfile({
+                    ...editProfile,
+                    newPassword: e.target.value,
+                  });
+                }}
+              />
+              <TextField
+                label="Confirm Password"
+                variant="standard"
+                fullWidth
+                sx={{ marginBottom: "20px" }}
+                onChange={(e) => {
+                  setEditProfile({
+                    ...editProfile,
+                    confirmPassword: e.target.value,
+                  });
+                }}
+              />
+              <label htmlFor="file">
+                <span style={{ cursor: "pointer" }}>Upload Image </span>
+
+                <input
+                  type="file"
+                  id="file"
+                  value={""}
+                  onChange={(e) =>
+                    setEditProfile({ ...editProfile, file: e.target.files[0] })
+                  }
+                  style={{ display: "none" }}
+                />
+              </label>
+            </DialogContent>
+          </div>
         </div>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -212,6 +238,7 @@ const Single = () => {
             </div>
 
             <div className="right">
+               {/* Recharts AreaChart for displaying data */}
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                   width={300}
@@ -224,7 +251,6 @@ const Single = () => {
                     bottom: 0,
                   }}
                 >
-                  <Tooltip />
                   <XAxis dataKey="months" />
                   <YAxis />
 
@@ -240,6 +266,7 @@ const Single = () => {
             </div>
           </div>
           <div className="bottom">
+             {/* Bottom section with a table of previous transactions */}
             <Typography variant="h4"> Previous Transactions</Typography>
             <div style={{ height: 270 }}>
               <TableContainer component={Paper}>

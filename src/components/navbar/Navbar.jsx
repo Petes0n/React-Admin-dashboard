@@ -89,7 +89,7 @@ function Navbar(props) {
           </IconButton>
           <div className="navbar">
             <div className="logo">
-              <img src="logo.svg" alt="hello" />
+              <img src="/logo192.png" alt="hello" className="admin-logo"/>
               <span>Admin</span>
             </div>
             <div className="icons">
@@ -103,7 +103,9 @@ function Navbar(props) {
                 </div>
               </Link>
               <div className="user">
+                <Link to='/single/user/info'>
                 <img src="/demo.jpeg" alt="" />
+                </Link>
                 <span>Heather</span>
               </div>
             </div>
@@ -112,16 +114,30 @@ function Navbar(props) {
       </AppBar>
     </div>
   );
-
-  return (
-    // Render the complete component
-    <div>
+const navigateState =()=>{
+  if(window.location.pathname !== '/login'){
+    return(
+      <div>
       {sidebar()}
       {header()}
       {/* Render children components */}
       <div>{props.children}</div>
     </div>
-  );
+    )
+   
+  }
+  else{
+    <div>{props.children}</div>
+  }
+ 
+
+}
+  return (
+    // Render the complete component
+    <>
+   { navigateState()}
+    </>
+  )
 }
 
 export default Navbar;
