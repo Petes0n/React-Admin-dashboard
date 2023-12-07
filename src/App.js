@@ -13,9 +13,9 @@ function App() {
   return (
     <>
       {/* /* Main container for the entire application*/}
-      <div className="main">
+      <div >
         <div className="container"></div>
-        <div className={loginpage ? "" : "contentContainer"}>
+        <div className={loginpage ? "login-user" : "contentContainer main"}>
           {/* BrowserRouter to enable routing 
      check this site to read more about react Browser router
      https://reactrouter.com/en/main/router-components/browser-router
